@@ -1,0 +1,1 @@
+# TypescriptDay1
