@@ -12,12 +12,13 @@ export class ProductComponent implements OnInit {
   private logic: Logic;
   cats = Categories;
   headers: Array<string>;
-  searchText: string;
+  value: number;
   constructor() {
       this.product = new Product(0, '', 0, '');
       this.products = new Array<Product>();
       this.logic = new Logic();
       this.headers  =new Array<string>();
+      this.value = 0;
   }
 
   // inoked after the ctor
@@ -37,23 +38,7 @@ export class ProductComponent implements OnInit {
     this.products = this.logic.saveProducts(this.product);
     console.log(JSON.stringify(this.products));
   }
-  update(): void{
-    this.products = this.logic.updateProduct(this.product);
-  }
-  sortProducts(): void{
-    this.logic.sortProductsByName()
-  }
-  reverseSortProducts(): void {
-    this.logic.reverseProductsByName()
-  }
-  delete(prd: Product): void {
-    this.products = this.logic.deleteProduct(prd);
-    console.log(JSON.stringify(this.products));
-  }
   getSelectedProduct(p: Product): void {
       this.product = Object.assign({}, p);
-  }
-  search(): void{
-    this.products = this.logic.searchProducts(this.searchText)
   }
 }
